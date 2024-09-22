@@ -25,13 +25,29 @@ export default function HomePage() {
   return (
     <div>
       <h1>Product Listings</h1>
-      <ul>
+      <ul style={{ listStyleType: "none", padding: 0 }}>
         {products.map((product) => (
-          <li key={product._id}>
-            <Link href={`/product/${product.slug}`}>
-              <a>
-                {product.name} - ${product.price}
-              </a>
+          <li key={product._id} style={{ marginBottom: "20px" }}>
+            <Link
+              href={`/product/${product.slug}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img
+                  src={product.images[0]} // Display the first image from the array
+                  alt={product.name}
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    objectFit: "cover",
+                    marginRight: "10px",
+                  }}
+                />
+                <div>
+                  <h2>{product.name}</h2>
+                  <p>₦{product.price}</p>
+                </div>
+              </div>
             </Link>
           </li>
         ))}
